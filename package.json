@@ -1,0 +1,19 @@
+{
+  "name": "qa-brains-ecommerce",
+  "version": "1.0.0",
+  "description": "A sandbox project for practicing TS + Cypress - based TAF using QA Brains Practice E-Commerce Site as an app.",
+  "engines": {
+    "node": "^20"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mion.s.vocaloid@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.19.37",
+    "cypress": "^15.11.0",
+    "typescript": "^5.9.3"
+  }
+}
