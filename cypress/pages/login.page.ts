@@ -1,9 +1,9 @@
 class LoginPage {
 
-    elements = {
+  elements = {
     emailInput: () => cy.get('#email'),
     passwordInput: () => cy.get('#password'),
-    loginButton: () => cy.get('button[type="submit"]')
+    loginButton: () => cy.get('button[type="submit"]'),
   }
 
   visit(): void {
