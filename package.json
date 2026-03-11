@@ -7,13 +7,18 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cy:open": "npx cypress open",
+    "lint:fix": "npx eslint --fix"
   },
   "author": "mion.s.vocaloid@gmail.com",
   "license": "ISC",
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/node": "^20.19.37",
     "cypress": "^15.11.0",
-    "typescript": "^5.9.3"
+    "eslint": "^10.0.3",
+    "globals": "^17.4.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.57.0"
   }
 }
