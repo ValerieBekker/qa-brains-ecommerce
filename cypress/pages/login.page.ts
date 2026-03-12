@@ -9,15 +9,10 @@ class LoginPage {
     cy.visit('/login');
   }
 
-  fillEmail(email: string): void {
-    this.elements.emailInput().type(email);
-  }
-
-  fillPassword(password: string): void {
-    this.elements.passwordInput().type(password);
-  }
-
-  clickLogin(): void {
+  login(creds: { email: string; password: string }): void {
+    this.visit();
+    this.elements.emailInput().type(creds.email);
+    this.elements.passwordInput().type(creds.password);
     this.elements.loginButton().click();
   }
 

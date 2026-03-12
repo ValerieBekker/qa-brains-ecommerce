@@ -1,26 +1,21 @@
-import { log } from 'console';
 import { loginPage } from '../../pages/login.page';
 import { productsPage } from '../../pages/products.page';
 
 describe('Login Tests', () => {
-  beforeEach(() => {
-    loginPage.visit();
-  });
-
   describe('Login Positive Tests', () => {
+    const validCreds = { email: 'test@qabrains.com', password: 'Password123' };
+
     it('should successfully login with valid credentials and display products container', () => {
-      loginPage.fillEmail('test@qabrains.com');
-      loginPage.fillPassword('Password123');
-      loginPage.clickLogin();
+      loginPage.login(validCreds);
       productsPage.verifyProductsPageIsDisplayed();
     });
   });
 
   describe('Login Negative Tests', () => {
+    const invalidCreds = { email: 'testtttttt@qabrains.com', password: 'Password123555' };
+
     it('should not be able to login with invalid credentials', () => {
-      loginPage.fillEmail('testtttttt@qabrains.com');
-      loginPage.fillPassword('Password123555');
-      loginPage.clickLogin();
+      loginPage.login(invalidCreds);
       loginPage.verifyInvalidCredsMessageIsDisplayed();
     });
   });

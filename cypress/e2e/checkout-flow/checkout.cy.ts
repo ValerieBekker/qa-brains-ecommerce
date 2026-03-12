@@ -5,10 +5,8 @@ import { checkoutPage } from '../../pages/checkout.page';
 
 describe('Checkout Flow Tests', () => {
   beforeEach(() => {
-    loginPage.visit();
-    loginPage.fillEmail('test@qabrains.com');
-    loginPage.fillPassword('Password123');
-    loginPage.clickLogin();
+    const validCreds = { email: 'test@qabrains.com', password: 'Password123' };
+    loginPage.login(validCreds);
     productsPage.verifyProductsPageIsDisplayed();
   });
 
