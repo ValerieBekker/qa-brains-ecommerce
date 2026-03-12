@@ -8,6 +8,7 @@
   "main": "index.js",
   "scripts": {
     "cy:open": "npx cypress open",
+    "test": "cypress run",
     "lint:fix": "npx eslint --fix",
     "format": "prettier --write ."
   },
