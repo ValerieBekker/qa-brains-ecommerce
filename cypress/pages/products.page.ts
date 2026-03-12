@@ -5,6 +5,10 @@ class ProductsPage {
     cartHeaderButton: () => cy.get('#ecommerce-header').find('span[role="button"]'),
   };
 
+  verifyProductsPageIsDisplayed(): void {
+    cy.get('.products').should('be.visible');
+  }
+
   getProductNameByIndex(index: number): Cypress.Chainable<string> {
     return this.elements.productName(index).invoke('text');
   }

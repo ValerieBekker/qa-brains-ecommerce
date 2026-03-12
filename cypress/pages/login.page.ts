@@ -20,6 +20,10 @@ class LoginPage {
   clickLogin(): void {
     this.elements.loginButton().click();
   }
+
+  verifyInvalidCredsMessageIsDisplayed(): void {
+    cy.contains('Neither email nor password matched.').should('be.visible');
+  }
 }
 
 export const loginPage = new LoginPage();

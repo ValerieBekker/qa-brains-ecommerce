@@ -3,6 +3,7 @@ class CartPage {
     productNameInCart: (productName: string) => cy.contains(productName),
     removeButton: () => cy.contains('Remove'),
     quantityPlusButton: () => cy.contains('+'),
+    checkoutButton: () => cy.contains('Checkout'),
   };
 
   verifyProductNameInCart(productName: string, shouldBeVisible: boolean): void {
@@ -11,6 +12,10 @@ class CartPage {
 
   clickRemoveBtn(): void {
     this.elements.removeButton().click();
+  }
+
+  verifyRemovedFromCartToast(): void {
+    cy.contains('Removed from cart').should('be.visible');
   }
 
   clickQuantityPlusButton(numberOfClicks: number): void {
@@ -27,6 +32,10 @@ class CartPage {
       .then((quantityText) => {
         expect(quantityText.trim()).to.eq(quantityOfItems.toString());
       });
+  }
+
+  clickCheckoutBtn(): void {
+    this.elements.checkoutButton().click();
   }
 }
 

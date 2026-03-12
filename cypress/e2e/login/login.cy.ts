@@ -1,4 +1,6 @@
+import { log } from 'console';
 import { loginPage } from '../../pages/login.page';
+import { productsPage } from '../../pages/products.page';
 
 describe('Login Tests', () => {
   beforeEach(() => {
@@ -10,7 +12,7 @@ describe('Login Tests', () => {
       loginPage.fillEmail('test@qabrains.com');
       loginPage.fillPassword('Password123');
       loginPage.clickLogin();
-      cy.get('.products').should('be.visible');
+      productsPage.verifyProductsPageIsDisplayed();
     });
   });
 
@@ -19,7 +21,7 @@ describe('Login Tests', () => {
       loginPage.fillEmail('testtttttt@qabrains.com');
       loginPage.fillPassword('Password123555');
       loginPage.clickLogin();
-      cy.contains('Neither email nor password matched.').should('be.visible');
+      loginPage.verifyInvalidCredsMessageIsDisplayed();
     });
   });
 });

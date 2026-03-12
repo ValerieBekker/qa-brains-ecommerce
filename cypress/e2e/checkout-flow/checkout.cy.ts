@@ -1,8 +1,9 @@
 import { loginPage } from '../../pages/login.page';
 import { productsPage } from '../../pages/products.page';
 import { cartPage } from '../../pages/cart.page';
+import { checkoutPage } from '../../pages/checkout.page';
 
-describe('Cart Basic Functionality Tests', () => {
+describe('Checkout Flow Tests', () => {
   beforeEach(() => {
     loginPage.visit();
     loginPage.fillEmail('test@qabrains.com');
@@ -11,33 +12,31 @@ describe('Cart Basic Functionality Tests', () => {
     productsPage.verifyProductsPageIsDisplayed();
   });
 
-  it('should successfully add a product to the cart', () => {
+  it('should successfully add a product to the cart and proceed to checkout', () => {
     productsPage.getProductNameByIndex(0).then((firstProductName) => {
       productsPage.clickAddToCartBtnByIndex(0);
       productsPage.clickCartHeaderBtn();
       cartPage.verifyProductNameInCart(firstProductName, true);
+      cartPage.clickCheckoutBtn();
+      checkoutPage.verifyCheckoutFormIsDisplayed();
     });
   });
 
-  it('should successfully remove a product from the cart', () => {
+  it('should successfully add a product to the cart and execute complete checkout with payment', () => {
     productsPage.getProductNameByIndex(0).then((firstProductName) => {
-      productsPage.clickAddToCartBtnByIndex(0);
-      productsPage.clickCartHeaderBtn();
-      cartPage.verifyProductNameInCart(firstProductName, true);
-      cartPage.clickRemoveBtn();
-      cartPage.verifyRemovedFromCartToast();
-      cartPage.verifyProductNameInCart(firstProductName, false);
-    });
-  });
+      const checkoutFormConfig = { name: 'Jack', lastName: 'Nice', zipCode: '6000' };
 
-  it('should update product quantity in the cart correctly', () => {
-    productsPage.getProductNameByIndex(0).then((firstProductName) => {
       productsPage.clickAddToCartBtnByIndex(0);
       productsPage.clickCartHeaderBtn();
       cartPage.verifyProductNameInCart(firstProductName, true);
-      cartPage.verifyQuantity(1);
-      cartPage.clickQuantityPlusButton(2);
-      cartPage.verifyQuantity(3);
+      cartPage.clickCheckoutBtn();
+      checkoutPage.verifyCheckoutFormIsDisplayed();
+      checkoutPage.fillCheckoutForm(checkoutFormConfig);
+      checkoutPage.clickContinueBtn();
+      checkoutPage.verifyProductNameInCart(firstProductName);
+      checkoutPage.verifyQuantity(1);
+      checkoutPage.clickFinishBtn();
+      checkoutPage.verifyOrderSentMessageIsDisplayed();
     });
   });
 });
