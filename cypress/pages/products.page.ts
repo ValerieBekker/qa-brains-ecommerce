@@ -1,10 +1,9 @@
 class ProductsPage {
-
   elements = {
     productName: (index: number) => cy.get('a.text-lg').eq(index),
     addToCartButton: (index: number) => cy.contains('Add to cart').eq(index),
-    cartHeaderButton: () => cy.get('#ecommerce-header').find('span[role="button"]')
-  }
+    cartHeaderButton: () => cy.get('#ecommerce-header').find('span[role="button"]'),
+  };
 
   getProductNameByIndex(index: number): Cypress.Chainable<string> {
     return this.elements.productName(index).invoke('text');
@@ -17,7 +16,6 @@ class ProductsPage {
   clickCartHeaderBtn(): void {
     this.elements.cartHeaderButton().click();
   }
-
 }
 
-export const productsPage = new ProductsPage()
+export const productsPage = new ProductsPage();

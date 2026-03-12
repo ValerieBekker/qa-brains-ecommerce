@@ -8,7 +8,8 @@
   "main": "index.js",
   "scripts": {
     "cy:open": "npx cypress open",
-    "lint:fix": "npx eslint --fix"
+    "lint:fix": "npx eslint --fix",
+    "format": "prettier --write ."
   },
   "author": "mion.s.vocaloid@gmail.com",
   "license": "ISC",
@@ -17,7 +18,10 @@
     "@types/node": "^20.19.37",
     "cypress": "^15.11.0",
     "eslint": "^10.0.3",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
     "globals": "^17.4.0",
+    "prettier": "^3.8.1",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.57.0"
   }
